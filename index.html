@@ -1,12 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+
+    <!-- HEADER -->
+    <header>
+        <h1>🎓 Student Management System</h1>
+        <p>Node.js • Express.js • Mongoose • MongoDB</p>
+    </header>
+
+
+    <main>
+
+        <!-- DASHBOARD -->
+        <section class="dashboard">
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">0</p>
+            </div>
+
+            <div class="card">
+                <h3>MCA Students</h3>
+                <p id="mcaStudents">0</p>
+            </div>
+
+            <div class="card">
+                <h3>BCA Students</h3>
+                <p id="bcaStudents">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Average Marks</h3>
+                <p id="averageMarks">0</p>
+            </div>
+
+        </section>
+
+
+        <!-- ADD / UPDATE STUDENT -->
+        <section class="form-section">
+
+            <h2 id="formTitle">Add New Student</h2>
+
+            <form id="studentForm">
+
+                <!-- Hidden ID used during update -->
+                <input type="hidden" id="studentId">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Student Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="rollNo"
+                    placeholder="Roll Number"
+                    required
+                >
+
+                <select id="course" required>
+
+                    <option value="">
+                        Select Course
+                    </option>
+
+                    <option value="MCA">
+                        MCA
+                    </option>
+
+                    <option value="BCA">
+                        BCA
+                    </option>
+
+                    <option value="B.Tech">
+                        B.Tech
+                    </option>
+
+                </select>
+
+                <input
+                    type="number"
+                    id="semester"
+                    placeholder="Semester"
+                    min="1"
+                    max="8"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="marks"
+                    placeholder="Marks"
+                    min="0"
+                    max="100"
+                    required
+                >
+
+                <button type="submit">
+                    Save Student
+                </button>
+
+                <button
+                    type="button"
+                    class="cancel"
+                    onclick="resetForm()"
+                >
+                    Clear
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- SEARCH -->
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search by name, roll number or course..."
+                onkeyup="searchStudents()"
+            >
+
+        </section>
+
+
+        <!-- STUDENT RECORDS -->
+        <section>
+
+            <h2>Student Records</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Semester</th>
+                            <th>Email</th>
+                            <th>Marks</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
 </body>
+
 </html>
